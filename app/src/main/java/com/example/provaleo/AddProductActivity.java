@@ -54,6 +54,12 @@ public class AddProductActivity extends AppCompatActivity {
             return;
         }
 
+        // Validação: Preço com no máximo duas casas decimais
+        if (priceStr.contains(".") && priceStr.substring(priceStr.indexOf(".") + 1).length() > 2) {
+            Toast.makeText(this, "O preço deve ter no máximo duas casas decimais", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         try {
             double price = Double.parseDouble(priceStr);
             int quantity = Integer.parseInt(quantityStr);
